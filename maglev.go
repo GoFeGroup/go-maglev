@@ -3,8 +3,6 @@ package maglev
 import (
 	"runtime"
 	"sort"
-
-	"github.com/GoFeGroup/maglev/loadbalancer"
 )
 
 // GetLookupTable returns the Maglev lookup table of the size "m" for the given
@@ -24,7 +22,7 @@ import (
 // backend's weight / number of backends, so that each backend is selected at least once). If this is lower
 // than weightCntr[backendName], another backend has a turn (and weightCntr[backendName]
 // is incremented). This way we honor the weights.
-func GetLookupTable(backendsMap map[string]*loadbalancer.Backend, m uint64) []int {
+func GetLookupTable(backendsMap map[string]*Backend, m uint64) []int {
 	if len(backendsMap) == 0 {
 		return nil
 	}
