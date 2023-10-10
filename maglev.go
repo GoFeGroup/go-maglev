@@ -54,7 +54,7 @@ func GetLookupTable(backendsMap map[string]*Backend, m uint64) []int {
 		for {
 			// change the default selection of backend turns only if weights are used
 			if weightSum/uint64(l) > 1 {
-				if ((n + 1) * uint64(backendsMap[backends[i]].Weight)) < uint64(weightCntr[backends[i]]) {
+				if ((n + 1) * uint64(backendsMap[backends[i]].Weight)) <= uint64(weightCntr[backends[i]]) {
 					i = (i + 1) % l
 					continue
 				}
